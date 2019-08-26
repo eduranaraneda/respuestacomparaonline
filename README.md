@@ -1,2 +1,2 @@
 # respuestacomparaonline
-respuesta al tes de Ingeniería de software de comparaonline
+respuesta al test de Ingeniería de Software de comparaonline
