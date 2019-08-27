@@ -14,17 +14,17 @@ var SuperSale = require("./../class/SuperSale.mjs");
 
 var CarInsurance = require("./../class/CarInsurance.mjs");
 
-  let productsAtDayZero = [
-    new Product('Medium Coverage', 10, 20),
-    new FullCoverage('Full Coverage', 2, 0),
-    new Product('Low Coverage', 5, 7),
-    new MegaCoverage('Mega Coverage', 0, 80),
-    new MegaCoverage('Mega Coverage', -1, 80),
-    new SpecialFullCoverage('Special Full Coverage', 15, 20),
-    new SpecialFullCoverage('Special Full Coverage', 10, 49),
-    new SpecialFullCoverage('Special Full Coverage', 5, 49),
-    new SuperSale('Super Sale', 3, 6),
-  ];
+let productsAtDayZero = [
+  new Product('Medium Coverage', 10, 20),
+  new FullCoverage('Full Coverage', 2, 0),
+  new Product('Low Coverage', 5, 7),
+  new MegaCoverage('Mega Coverage', 0, 80),
+  new MegaCoverage('Mega Coverage', -1, 80),
+  new SpecialFullCoverage('Special Full Coverage', 15, 20),
+  new SpecialFullCoverage('Special Full Coverage', 10, 49),
+  new SpecialFullCoverage('Special Full Coverage', 5, 49),
+  new SuperSale('Super Sale', 3, 6),
+];
 
   var stream = fs.createWriteStream(result, {flags: 'w'});
   const carInsurance = new CarInsurance(productsAtDayZero);

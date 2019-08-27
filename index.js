@@ -4,9 +4,7 @@ var FullCoverage = require("./class/FullCoverage.mjs");
 var MegaCoverage = require("./class/MegaCoverage.mjs");
 var SpecialFullCoverage = require("./class/SpecialFullCoverage.mjs");
 var SuperSale = require("./class/SuperSale.mjs");
-
 var CarInsurance = require("./class/CarInsurance.mjs");
-
 
   let productsAtDayZero = [
     new Product('Medium Coverage', 10, 20),
@@ -31,6 +29,5 @@ var CarInsurance = require("./class/CarInsurance.mjs");
     carInsurance.updatePrice().forEach(productPrinter);
     console.log(``);
   }
-
   
   productsAtDayZero = [];
