@@ -8,7 +8,7 @@ var SuperSale = require("./class/SuperSale.mjs");
 var CarInsurance = require("./class/CarInsurance.mjs");
 
 
-  const productsAtDayZero = [
+  let productsAtDayZero = [
     new Product('Medium Coverage', 10, 20),
     new FullCoverage('Full Coverage', 2, 0),
     new Product('Low Coverage', 5, 7),
@@ -28,9 +28,9 @@ var CarInsurance = require("./class/CarInsurance.mjs");
   for (let i = 1; i <= 30; i += 1) {
     console.log(`********* Day ${i} *********`);
     console.log('name, sellIn, price');
-    
     carInsurance.updatePrice().forEach(productPrinter);
-    console.log('');
+    console.log(``);
   }
 
   
+  productsAtDayZero = [];

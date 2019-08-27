@@ -13,11 +13,11 @@ class SpecialFullCoverage extends Product {
 
     increasePrice(days, price)
     {
-        if (days <= 0)
+        if (days < 0)
           super.setPrice(0);
-        else if (days <= 5)
+        else if (days < 5)
           super.setPrice(price + 3);
-        else if (days <=10)
+        else if (days <10)
           super.setPrice(price + 2);
         else 
         super.setPrice(price + 1);
