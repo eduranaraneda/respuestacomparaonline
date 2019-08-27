@@ -8,11 +8,14 @@ class FullCoverage extends Product {
     updatePrice()
     {
       super.setSellIn(this.getSellIn() - 1);
-      this.increasePrice(super.getPrice());
+      this.increasePrice(this.getSellIn(), super.getPrice());
     }
 
-    increasePrice(price)
+    increasePrice(days, price)
     {
+      if (days < 0)
+        super.setPrice(price + 2)
+      else 
         super.setPrice(price + 1)
     }
     getName() { return super.getName();}
