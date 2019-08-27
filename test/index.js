@@ -1,8 +1,10 @@
 
 const fs = require('fs');
 
+
+const base   = './test/products_after_30_days.txt';
 const result = './test/ed_products_after_30_days.txt';
-const base = './test/products_after_30_days.txt';
+
 
 var Product = require("./../class/Product.mjs");
 var FullCoverage = require("./../class/FullCoverage.mjs");
@@ -23,10 +25,8 @@ var CarInsurance = require("./../class/CarInsurance.mjs");
     new SpecialFullCoverage('Special Full Coverage', 5, 49),
     new SuperSale('Super Sale', 3, 6),
   ];
-  var stream = fs.createWriteStream(result, {flags: 'w'});
-  
-  
 
+  var stream = fs.createWriteStream(result, {flags: 'w'});
   const carInsurance = new CarInsurance(productsAtDayZero);
   const productPrinter = function (product) {
     stream.write(`${product.getName()}, ${product.getSellIn()}, ${product.getPrice()}\r\n`);
@@ -45,23 +45,51 @@ var CarInsurance = require("./../class/CarInsurance.mjs");
   }
 
   stream.end();
-
+  stream.on('finish', () => {
+    comparaArchivos();
+  });
+  
+  stream = null;
   productsAtDayZero = [];
   
-  "use strict";
+  function comparaArchivos()
+  {
   var chai = require('chai');
   var chaiFiles = require('chai-files');
-
   chai.use(chaiFiles);
   
   var expect = chai.expect;
   var file = chaiFiles.file;
+  
+  var dataBase = fs.readFileSync(base);
+  var dataResult = fs.readFileSync(result);
+  
 try
 {
-  console.log( expect(file(base)).to.exist ? "Archivo base encontrado." : "Archivo base inexistente.\n Test falló.");
-  console.log( expect(file(result)).to.exist ? "Archivo resultado encontrado." : "Archivo Resultado inexistente.\n Test falló.");
-  console.log( expect(file(result)).to.be.equal(file(base)) ? 'Test OK!!' : 'Test falló!!\n archivos son diferentes.!!');
+  console.log( expect(file(base)).to.exist ? "Archivo base encontrado.\n" : "Archivo base inexistente.\n Test falló.\n");
+  
+  console.log( expect(file(result)).to.exist ? "Archivo resultado encontrado.\n" : "Archivo Resultado inexistente.\n Test falló.\n");
+  
+  console.log (areBuffersEqual(dataBase, dataResult)? 'Test OK!!\n' : 'Test falló!!\nArchivos son diferentes.!!\n' )
+  
+  //console.log( expect(file(result)).be.equal(file(base)) ? 'Test OK!!\n' : 'Test falló!!\nArchivos son diferentes.!!\n'  );
 
 }
-catch{console.log("falló el test.")}
+catch{console.log("Falló test del test.")}
+  }
 
+function areBuffersEqual(bufA, bufB) {
+  var len = bufA.length;
+  var len2 = bufB.length;
+  if (len !== len2) {
+      console.log(`Diferentes por tamaño del archivo ${len} =! ${len2}\n`);
+      return false;
+  }
+  for (var i = 0; i < len; i++) {
+      if (bufA.readUInt8(i) !== bufB.readUInt8(i)) {
+          console.log(`Diferencias encontradas en el archivo ${i} : ${bufA.readUInt8(i)} =! ${bufB.readUInt8(i)}\n`);
+          return false;
+      }
+  }
+  return true;
+}
