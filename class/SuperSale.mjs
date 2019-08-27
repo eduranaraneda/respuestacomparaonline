@@ -1,6 +1,7 @@
 var Product = require("./Product.mjs");
+var decreaseFactor = 2;
 
-class FullCoverage extends Product {
+class SuperSale extends Product {
   constructor(name, sellIn, price) 
   {
     super(name, sellIn, price);
@@ -8,16 +9,19 @@ class FullCoverage extends Product {
     updatePrice()
     {
       super.setSellIn(this.getSellIn() - 1);
-      this.increasePrice(super.getPrice());
+      this.decreasePrice(super.getPrice());
     }
 
-    increasePrice(price)
-    {
-        super.setPrice(price + 1)
+    decreasePrice(value) { 
+      if (value<0)
+        super.setPrice(this.getPrice()-(2*decreaseFactor));
+      else
+        super.setPrice(this.getPrice()-(1*decreaseFactor));
     }
+
     getName() { return super.getName();}
     getSellIn() { return super.getSellIn();}
     getPrice() { return super.getPrice();}
   }
 
-  module.exports = FullCoverage;
+  module.exports = SuperSale;
