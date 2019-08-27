@@ -1,0 +1,21 @@
+{
+    "name": "respuestacomparaonline",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "test": "node index.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/eduranaraneda/respuestacomparaonline/"
+    },
+    "keywords": [],
+    "author": "ernesto duran",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/eduranaraneda/respuestacomparaonline/issues"
+    },
+    "homepage": "https://github.com/eduranaraneda/respuestacomparaonline#readme"
+  }
